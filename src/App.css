@@ -1,0 +1,20 @@
+.time-list > div {
+  border-bottom: 1px solid #f2f2f7;
+  margin: 0.5rem;
+}
+
+.time-list {
+  background-color: white;
+  margin: 1rem;
+}
+
+.record-button {
+  border-radius: 50%;
+  width: 160px;
+  height: 160px;
+}
+
+.center-button {
+  position: relative;
+  left: 50%;
+}

@@ -1,0 +1,14 @@
+{
+  "background_color": "#000000",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "/silence suzuka.png",
+      "sizes": "400x400",
+      "type": "image/png"
+    }
+  ],
+  "name": "TimeRecord",
+  "short_name": "TimeRecord",
+  "start_url": "index.html"
+}
