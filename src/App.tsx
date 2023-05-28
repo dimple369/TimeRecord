@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { TouchEvent } from "react"
 import "./App.css"
 
 function App() {
@@ -22,11 +23,9 @@ function App() {
 
   return (
     <>
-      <div className="center-button">
-        <button className="record-button" onClick={handleRecordClick}>
-          Record Time
-        </button>
-      </div>
+      <button className="record-button" onClick={handleRecordClick}>
+        Record Time
+      </button>
       <div className="time-list">
         {times.map((time, index) => (
           <div key={index}>
