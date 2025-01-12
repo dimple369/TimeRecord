@@ -1,6 +1,7 @@
 import { useState } from "react"
-import { TouchEvent } from "react"
 import "./App.css"
+import { Item } from "./component/Item"
+import dayjs from "dayjs"
 
 function App() {
   const [times, setTimes] = useState<string[]>(() => {
@@ -26,13 +27,13 @@ function App() {
       <button className="record-button" onClick={handleRecordClick}>
         Record Time
       </button>
-      <div className="time-list">
-        {times.map((time, index) => (
-          <div key={index}>
-            <div>{time}</div>
-            <button onClick={() => handleDeleteClick(index)}>Delete</button>
-          </div>
-        ))}
+
+      <div className="min-h-screen bg-gray-100 flex justify-center items-start p-4">
+        <div className="w-full max-w-md bg-white rounded-lg shadow-md">
+          {times.map((time, index) => (
+            <Item key={dayjs(time).toISOString()} date={dayjs(time)}></Item>
+          ))}
+        </div>
       </div>
     </>
   )
