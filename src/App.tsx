@@ -127,20 +127,19 @@ function App() {
 
   return (
     <>
-      <div className="header-title flex items-center justify-between px-4">
+      <div className="header-title">
         <span>打卡时间记录</span>
-        <div className="flex gap-2">
-          <button
-            className="text-sm px-3 py-1 rounded-full border border-white/60 text-white"
-            onClick={() => setShowFilter((v) => !v)}
-          >
-            筛选
-          </button>
-          <button className="record-button" onClick={handleRecordClick}>
-            Record Time
-          </button>
-        </div>
+        <button
+          className={`filter-btn${showFilter ? " active" : ""}`}
+          onClick={() => setShowFilter((v) => !v)}
+        >
+          筛选
+        </button>
       </div>
+
+      <button className="record-button" onClick={handleRecordClick}>
+        Record Time
+      </button>
 
       {showFilter && (
         <div className="bg-white shadow-sm px-4 py-3 space-y-2 text-sm">
