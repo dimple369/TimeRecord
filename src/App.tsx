@@ -8,11 +8,16 @@ type TimeRecord = {
   time: string
 }
 
-function defaultFilterStart() {
-  return dayjs().subtract(1, "month").date(21).startOf("day")
-}
-function defaultFilterEnd() {
-  return dayjs().date(20).startOf("day")
+function defaultFilterRange(reference = dayjs()) {
+  const cycleStart =
+    reference.date() >= 21
+      ? reference.date(21)
+      : reference.subtract(1, "month").date(21)
+
+  return {
+    start: cycleStart.startOf("day"),
+    end: cycleStart.add(1, "month").date(20).endOf("day"),
+  }
 }
 
 function roundToQuarterForStart(d: dayjs.Dayjs): dayjs.Dayjs {
@@ -84,14 +89,15 @@ function calcOvertimeStats(
 }
 
 function App() {
+  const [initialFilterRange] = useState(defaultFilterRange)
   const [times, setTimes] = useState<TimeRecord[]>(() => {
     const data = localStorage.getItem("date")
     return data ? JSON.parse(data) : []
   })
   const [showFilter, setShowFilter] = useState(false)
   const [isFiltering, setIsFiltering] = useState(false)
-  const [filterStart, setFilterStart] = useState(defaultFilterStart)
-  const [filterEnd, setFilterEnd] = useState(defaultFilterEnd)
+  const [filterStart, setFilterStart] = useState(initialFilterRange.start)
+  const [filterEnd, setFilterEnd] = useState(initialFilterRange.end)
 
   function handleRecordClick() {
     const date = new Date()
